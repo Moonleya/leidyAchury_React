@@ -1,25 +1,31 @@
+import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
+import logo from "../../assets/logo.png";
 
-function NavBar() {
-    return (
-        <header style={{ padding: "12px 16px", borderBottom: "1px solid #ddd" }}>
-            <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+const NavBar = () => {
+  return (
+    <header className="nav">
+      <nav className="nav__container">
+        
+        {/* Logo + nombre */}
+        <div className="nav__brand">
+          <img className="nav__logo" src={logo} alt="Logo WideTech" />
+          <span className="nav__name">MarketPlace</span>
+        </div>
 
-                {/* Logo */}
-                <div style={{ fontWeight: "bold", fontSize: "18px" }}>
-                    MiTienda 
-                </div>
+        {/* Links */}
+        <ul className="nav__links">
+          <li><a href="#" className="nav__link">Inicio</a></li>
+          <li><a href="#" className="nav__link">Productos</a></li>
+          <li><a href="#" className="nav__link">Ofertas</a></li>
+          <li><a href="#" className="nav__link">Contacto</a></li>
+        </ul>
 
-                {/* Links */}
-                <ul style={{ listStyle: "none", display: "flex", gap: "16px", margin: 0, padding: 0 }}>
-                    <li><a href="#" style={{ textDecoration: "none" }}>Inicio</a></li>
-                    <li><a href="#" style={{ textDecoration: "none" }}>Productos</a></li>
-                    <li><a href="#" style={{ textDecoration: "none" }}>Ofertas</a></li>
-                    <li><a href="#" style={{ textDecoration: "none" }}>Contacto</a></li>
-                </ul>
+        {/* Carrito */}
+        <div className="nav__cart">
+          <CartWidget />
+        </div>
 
-                {/* Carrito */}
-                <CartWidget />
             </nav>
         </header>
     );

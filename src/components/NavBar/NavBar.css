@@ -1,0 +1,62 @@
+.nav {
+  width: 100%;
+  background: #eef0f2;        /* gris */
+  padding: 18px 0;
+}
+
+.nav__container {
+  width: 100%;
+  max-width: 1200px;          /* ancho interno */
+  margin: 0 auto;             /* centra el contenido */
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* logo | menu | carrito */
+  align-items: center;
+  gap: 16px;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav__logo {
+  width: 600px;                /* logo más grande */
+  height: auto;
+  object-fit: contain;
+}
+
+.nav__name {
+  font-weight: 800;
+  font-size: 20px;
+  color: #111827;
+}
+
+.nav__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-self: center;       /* 👈 menú centrado */
+  display: flex;
+  gap: 40px;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #111827;
+}
+
+.nav__link:hover {
+  color: #0b5cff;
+}
+
+.nav__cart {
+  justify-self: end;          /* carrito a la derecha */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
