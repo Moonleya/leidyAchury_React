@@ -1,19 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import './App.css'
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import NotFound from "./components/NotFound/NotFound";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [cartCount, setCartCount] = useState(0);
+
+  const handleAddToCart = () => {
+    setCartCount((prev) => prev + 1);
+  };
 
   return (
-    <>
-      <NavBar />
-      <ItemListContainer greeting="¡Bienvenida a la tienda WideTech!"/>
-    </>
-  )
-}
+    <BrowserRouter>
+      <NavBar cartCount={cartCount} />
 
-export default App
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ItemListContainer
+              greeting="¡Bienvenidos a la tienda WideTech!"
+              onAddToCart={handleAddToCart}
+            />
+          }
+        />
+
+        <Route
+          path="/category/:categoryId"
+          element={
+            <ItemListContainer
+              greeting="Catálogo por categoría"
+              onAddToCart={handleAddToCart}
+            />
+          }
+        />
+
+        <Route
+          path="/item/:itemId"
+          element={
+            <ItemDetailContainer onAddToCart={handleAddToCart} />
+          }
+        />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}

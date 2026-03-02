@@ -1,62 +1,120 @@
-.nav {
+.nav{
   width: 100%;
-  background: #eef0f2;        /* gris */
-  padding: 18px 0;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 14px 0;
+
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-.nav__container {
+/* Contenedor: 3 columnas (logo | search | right) */
+.nav__container{
   width: 100%;
-  max-width: 1200px;          /* ancho interno */
-  margin: 0 auto;             /* centra el contenido */
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0 28px;
+
   display: grid;
-  grid-template-columns: auto 1fr auto; /* logo | menu | carrito */
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 16px;
+  gap: 26px;
 }
 
-.nav__brand {
+/* Brand */
+.nav__brand{
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  white-space: nowrap;
 }
 
-.nav__logo {
-  width: 600px;                /* logo más grande */
+.nav__logo{
+  width: 170px; /* similar al mockup */
   height: auto;
   object-fit: contain;
 }
 
-.nav__name {
-  font-weight: 800;
-  font-size: 20px;
+.nav__tagline{
+  font-style: italic;
+  font-size: 13px;
+  color: #84cc16; /* verde-lima */
+  margin-top: 8px;
+}
+
+/* Search centered */
+.nav__search{
+  justify-self: center;
+  width: min(520px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.nav__searchIcon{
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.nav__searchInput{
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
   color: #111827;
 }
 
-.nav__links {
+/* Right side (links + cart) */
+.nav__right{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav__links{
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-self: center;       /* 👈 menú centrado */
   display: flex;
-  gap: 40px;
+  gap: 26px;
 }
 
-.nav__link {
+.nav__link{
   text-decoration: none;
   font-weight: 600;
+  font-size: 14px;
   color: #111827;
 }
 
-.nav__link:hover {
-  color: #0b5cff;
+.nav__link:hover{
+  color: #C4D600;
 }
 
-.nav__cart {
-  justify-self: end;          /* carrito a la derecha */
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* Responsive */
+@media (max-width: 900px){
+  .nav__container{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .nav__search{
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .nav__right{
+    justify-content: space-between;
+  }
+
+  .nav__link--active {
+  color: #C4D600;
+  font-weight: 700;
+  }
 }
-
-
