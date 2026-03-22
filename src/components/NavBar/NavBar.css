@@ -9,7 +9,6 @@
   z-index: 999;
 }
 
-/* Contenedor: 3 columnas (logo | search | right) */
 .nav__container{
   width: 100%;
   max-width: 1200px;
@@ -22,7 +21,7 @@
   gap: 26px;
 }
 
-/* Brand */
+
 .nav__brand{
   display: flex;
   align-items: center;
@@ -31,7 +30,7 @@
 }
 
 .nav__logo{
-  width: 170px; /* similar al mockup */
+  width: 170px; 
   height: auto;
   object-fit: contain;
 }
@@ -39,11 +38,11 @@
 .nav__tagline{
   font-style: italic;
   font-size: 13px;
-  color: #84cc16; /* verde-lima */
+  color: #84cc16; 
   margin-top: 8px;
 }
 
-/* Search centered */
+
 .nav__search{
   justify-self: center;
   width: min(520px, 100%);
@@ -71,7 +70,7 @@
   color: #111827;
 }
 
-/* Right side (links + cart) */
+
 .nav__right{
   display: flex;
   align-items: center;
@@ -97,7 +96,7 @@
   color: #C4D600;
 }
 
-/* Responsive */
+
 @media (max-width: 900px){
   .nav__container{
     grid-template-columns: 1fr;

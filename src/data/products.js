@@ -48,3 +48,10 @@ export const products = [
     icon: "📍",
   },
 ];
+export const getProducts = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(products);
+    }, 1000);
+  });
+};

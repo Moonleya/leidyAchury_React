@@ -27,7 +27,7 @@ export default function ProductCard({ product, onAddToCart }) {
         </Link>
 
         <button
-          onClick={onAddToCart}
+         onClick={() => onAddToCart()}
           className="flex items-center justify-center gap-2 rounded-md bg-lime-100 px-4 py-3 font-semibold text-gray-900 hover:bg-lime-200"
         >
           <span>🛒</span>

@@ -10,13 +10,13 @@ const NavBar = ({ search = "", onSearchChange = () => {}, cartCount = 0 }) => {
   return (
     <header className="nav">
       <nav className="nav__container">
-        {/* Logo */}
+        { }
         <Link to="/" className="nav__brand">
           <img className="nav__logo" src={logo} alt="WideTech" />
           <span className="nav__tagline">your guidestar</span>
         </Link>
 
-        {/* Search */}
+        {}
         <div className="nav__search">
           <span className="nav__searchIcon">🔎</span>
           <input
@@ -27,7 +27,7 @@ const NavBar = ({ search = "", onSearchChange = () => {}, cartCount = 0 }) => {
           />
         </div>
 
-        {/* Links + Cart */}
+        {}
         <div className="nav__right">
           <ul className="nav__links">
             <li>

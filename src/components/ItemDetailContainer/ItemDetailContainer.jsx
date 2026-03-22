@@ -1,22 +1,32 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../data/products";
+import { getProducts } from "../../data/products";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
-const ItemDetailContainer = ({ onAddToCart }) => {
+export default function ItemDetailContainer({ onAddToCart }) {
   const { itemId } = useParams();
   const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getItem = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(products.find((p) => String(p.id) === String(itemId)));
-      }, 600);
-    });
+    setLoading(true);
 
-    getItem.then(setItem);
+    getProducts()
+      .then((response) => {
+        const productFound = response.find(
+          (product) => String(product.id) === String(itemId)
+        );
+        setItem(productFound);
+      })
+      .catch((error) => {
+        console.error("Error al cargar el producto:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [itemId]);
 
-  if (!item) {
+  if (loading) {
     return (
       <main className="mx-auto max-w-6xl px-7 py-10">
         <p className="text-gray-600">Cargando detalle...</p>
@@ -24,24 +34,13 @@ const ItemDetailContainer = ({ onAddToCart }) => {
     );
   }
 
-  return (
-    <main className="mx-auto max-w-6xl px-7 py-10">
-      <h2 className="text-3xl font-extrabold text-gray-900">{item.name}</h2>
-      <p className="mt-2 text-gray-600">{item.desc}</p>
+  if (!item) {
+    return (
+      <main className="mx-auto max-w-6xl px-7 py-10">
+        <p className="text-gray-600">Producto no encontrado.</p>
+      </main>
+    );
+  }
 
-      <div className="mt-6 text-4xl font-black text-gray-900">
-        ${item.price}
-        <span className="text-base font-medium text-gray-500">/mes</span>
-      </div>
-
-      <button
-        onClick={onAddToCart}
-        className="mt-8 rounded-md bg-lime-100 px-6 py-3 font-semibold text-gray-900 hover:bg-lime-200"
-      >
-        🛒 Agregar al carrito
-      </button>
-    </main>
-  );
-};
-
-export default ItemDetailContainer;
+  return <ItemDetail item={item} onAddToCart={onAddToCart} />;
+}
